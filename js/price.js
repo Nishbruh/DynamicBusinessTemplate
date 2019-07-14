@@ -74,7 +74,7 @@ prepareAdminDomLsit = () => {
         `;
     });
     if (!data.length)
-        html += '<tr><td colspan="6" class="table-danger  text-center">No Data Found</td></tr>'
+        html += '<tr><td colspan="7" class="table-danger  text-center">No Data Found</td></tr>'
     html += `   </tbody>
     </table>`
     return html;
