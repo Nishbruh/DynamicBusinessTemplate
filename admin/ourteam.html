@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <script src='../js/jquery.min.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Our Team Dashbord</h1>
+        <div class="ourteams mt-5">
+            <h2 class="text-center">Our Tean List</h2>
+            <hr>
+            <div class="row justify-content-around">
+                <div class=" col-md-5">
+                    <h2 class="text-center">Entry From</h2>
+                    <form id="ourteam-form">
+                        <input type="hidden" id="id" name="id">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="title" />
+                        </div>
+                        <div class="form-group">
+                            <label for="facebook">Facebook</label>
+                            <input type="text" class="form-control" id="facebook" name="facebook"
+                                placeholder="facebook" />
+                        </div>
+                        <div class="form-group">
+                            <label for="twitter">Twitter</label>
+                            <input type="text" class="form-control" id="twitter" name="twitter" placeholder="twitter" />
+                        </div>
+                        <div class="form-group">
+                            <img id="blah" src="#" alt="your image" style="height: 100px;width:100px; display: none" />
+                            <input type="file" class="form-control" id="avatar" name="avatar" placeholder="file" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <h3 class="text-center">Our Team List</h3>
+                    <div class="row p-3" id="ourteamList">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/ourTeam.js"></script>
+    <script>
+        generateAdminDom('#ourteamList')
+        $(document).on('change', '#avatar', function () {
+            readURL(this)
+            $("#blah").show()
+        })
+        document.getElementById('ourteam-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            let ourteam = {}
+            $.each($(e.target).serializeArray(), function (_, kv) {
+                if (ourteam.hasOwnProperty(kv.name)) {
+                    ourteam[kv.name] = $.makeArray(ourteam[kv.name]);
+                    ourteam[kv.name].push(kv.value);
+                } else {
+                    ourteam[kv.name] = kv.value;
+                }
+            });
+            ourteam.avatar = $("#blah").attr('src');
+            if (ourteam.id) {
+
+                editourteamLocal(ourteam);
+            } else {
+                if (ourteam.id === "") {
+                    ourteam.id = new Date().toISOString();
+                    addourteam(ourteam);
+                }
+            }
+            generateAdminDom('#ourteamList')
+            e.target.reset();
+            $(':input').val('');
+            $('#blah').hide();
+        })
+        _removeourteam = (ctx) => {
+            if (confirm("Are you sure you want to delete ourteam")) {
+                removeourteam(ctx)
+                generateAdminDom('#ourteamList')
+            }
+        }
+        _editourteam = (ctx) => {
+            var data = editourteam(ctx)
+            populateData("#ourteam-form", data)
+        }
+    </script>
+</body>
+
+</html>
