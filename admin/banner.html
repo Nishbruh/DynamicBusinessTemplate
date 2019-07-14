@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <script src='../js/jquery.min.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">banner Dashbord</h1>
+        <div class="banners mt-5">
+            <h2 class="text-center">banners List</h2>
+            <hr>
+            <div class="row justify-content-around">
+                <div class=" col-md-5">
+                    <h2 class="text-center">Entry From</h2>
+                    <form id="banner-form">
+                        <input type="hidden" id="id" name="id">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" />
+                        </div>
+                        <div class="form-group">
+                            <label for="readmore">Read More</label>
+                            <input type="text" class="form-control" id="readmore" name="readmore"
+                                placeholder="readmore" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <h3 class="text-center">banners List</h3>
+                    <div class="row p-3" id="bannerList">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/banner.js"></script>
+    <script>
+        generateAdminDom('#bannerList')
+        document.getElementById('banner-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            let banner = {}
+            $.each($(e.target).serializeArray(), function (_, kv) {
+                if (banner.hasOwnProperty(kv.name)) {
+                    banner[kv.name] = $.makeArray(banner[kv.name]);
+                    banner[kv.name].push(kv.value);
+                } else {
+                    banner[kv.name] = kv.value;
+                }
+            });
+            if (banner.id) {
+
+                editbannerLocal(banner);
+            } else {
+                if (banner.id === "") {
+                    banner.id = new Date().toISOString();
+                    addbanner(banner);
+                }
+            }
+            generateAdminDom('#bannerList')
+            e.target.reset();
+            $(':input').val('');
+        })
+        _removebanner = (ctx) => {
+            if (confirm("Are you sure you want to delete banner")) {
+                removebanner(ctx)
+                generateAdminDom('#bannerList')
+            }
+        }
+        _editbanner = (ctx) => {
+            var data = editbanner(ctx)
+            populateData("#banner-form", data)
+        }
+    </script>
+</body>
+
+</html>

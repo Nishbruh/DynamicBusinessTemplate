@@ -47,12 +47,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 				<input type="checkbox" id="drop" />
 				<ul class="menu ml-auto mt-1">
-					<li class="active"><a href="./admin/Price.html">Add Price</a></li>
+					<!-- <li class="active"><a href="./admin/Price.html">Add Price</a></li> -->
+					<li class="active"><a href="index.html">Home</a></li>
 					<li class=""><a href="#about">About Us</a></li>
-					<li class=""><a href="./admin/index.html">Add Services</a></li>
+					<li class=""><a href="#">Edit</a>
+						<ul class="">
+							<li class=""><a href="./admin/index.html">Add Services</a></li>
+							<li class=""><a href="./admin/ourteam.html">Edit OurTeam</a></li>
+							<li class=""><a href="./admin/Price.html">Add Price</a></li>
+							<li class=""><a href="#">Edit Banne</a></li>
+						</ul>
+					</li>
+					<!-- <li class="">
+						<select name="edit" id="edit" class="btn btn-primary">
+							<option value=""><a href="#">Edit</a></option>
+							<option value="addservices"><a href="#about">Add Services</a></option>
+							<option value="editourteam"><a href="#about">Edit OurTeam</a></option>
+							<option value="addprice"><a href="#about">Add Price</a></option>
+							<option value="editbanner"><a href="#about">Edit Banner</a></option>
+						</select>
+					</li> -->
+					<!-- <li class=""><a href="./admin/index.html">Add Services</a></li> -->
 					<li class=""><a href="#portfolio">Portfolio</a></li>
 					<!-- <li class=""><a href="#contact">Contact</a></li> -->
-					<li class=""><a href="./admin/ourteam.html">Edit OurTeam</a></li>
+					<!-- <li class=""><a href="./admin/ourteam.html">Edit OurTeam</a></li> -->
 					<li class="last-grid"><a href="#register">Register now</a></li>
 				</ul>
 			</nav>
@@ -73,7 +91,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<input type="radio" name="slides" id="slides_2" />
 						<input type="radio" name="slides" id="slides_3" />
 						<input type="radio" name="slides" id="slides_4" />
-						<ul class="banner_slide_bg">
+						<ul class="banner_slide_bg" id="bannerslides">
 							<li>
 								<div class="w3ls_banner_txt">
 
@@ -671,6 +689,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src='./js/price.js'></script>
 	<script>
 		generateDom('#pricetag');
+	</script>
+
+	<script src='./js/banner.js'></script>
+	<script>
+		generateDom('#bannerslides');
 	</script>
 </body>
 
