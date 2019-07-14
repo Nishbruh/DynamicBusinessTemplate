@@ -9,13 +9,19 @@ prepareDomList = () => {
     var html = '';
     let dom = data.forEach((team, index) => {
         html += `
-        <div class="col-lg-4 col-md-6 col-sm-6 mb-5">
-            <div class="bottom-gd">
-                <span>${index +1}</span>
-                <h3 class="mt-4">${team.title}</h3>
-                <p class="mt-2">${team.description}</p>
-            </div>
-        </div>
+        <div class="col-lg-3 col-sm-6 mb-4">
+					<div class="box13">
+						<img src="${team.avatar}" class="img-fluid img-thumbnail" alt="" />
+						<div class="box-content">
+							<h3 class="title">${team.name}</h3>
+							<span class="post">${team.title}r</span>
+							<ul class="social">
+								<li><a href="${team.facebook}"><span class="fa fa-facebook"></span></a></li>
+								<li><a href="${team.twitter}"><span class="fa fa-twitter"></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
         `;
     });
     return html;

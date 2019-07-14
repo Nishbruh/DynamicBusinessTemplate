@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <script src='../js/jquery.min.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">price Dashbord</h1>
+        <div class="prices mt-5">
+            <h2 class="text-center">price List</h2>
+            <hr>
+            <div class="row justify-content-around">
+                <div class=" col-md-5">
+                    <h2 class="text-center">Entry From</h2>
+                    <form id="price-form">
+                        <input type="hidden" id="id" name="id">
+                        <div class="form-group">
+                            <label for="symbol" class="text-capitalize">symbol</label>
+                            <select name="symbol" id="symbol" class="form-control">
+                                <option value="female">female</option>
+                                <option value="user-o">user-o</option>
+                                <option value="video-o">video-o</option>
+                                <option value="bed">bed</option>
+                                <option value="beer">beer</option>
+                                <option value="bicycle">bicycle</option>
+                                <option value="binoculars">binoculars</option>
+                                <option value="birthday-cake">birthday-cake</option>
+                                <option value="desktop">desktop</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" />
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="price" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea type="text" class="form-control" id="description" name="description"
+                                placeholder="Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="readmore">Read More</label>
+                            <input type="text" class="form-control" id="readmore" name="readmore"
+                                placeholder="Add Your Link" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <h3 class="text-center">price List</h3>
+                    <div class="row p-3" id="priceList">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/price.js"></script>
+    <script>
+        generateAdminDom('#priceList')
+        document.getElementById('price-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            let price = {}
+            $.each($(e.target).serializeArray(), function (_, kv) {
+                if (price.hasOwnProperty(kv.name)) {
+                    price[kv.name] = $.makeArray(price[kv.name]);
+                    price[kv.name].push(kv.value);
+                } else {
+                    price[kv.name] = kv.value;
+                }
+            });
+            if (price.id) {
+
+                editpriceLocal(price);
+            } else {
+                if (price.id === "") {
+                    price.id = new Date().toISOString();
+                    addprice(price);
+                }
+            }
+            generateAdminDom('#priceList')
+            e.target.reset();
+            $(':input').val('');
+        })
+        _removeprice = (ctx) => {
+            if (confirm("Are you sure you want to delete price")) {
+                removeprice(ctx)
+                generateAdminDom('#priceList')
+            }
+        }
+        _editprice = (ctx) => {
+            var data = editprice(ctx)
+            populateData("#price-form", data)
+        }
+    </script>
+</body>
+
+</html>

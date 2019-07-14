@@ -47,11 +47,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 				<input type="checkbox" id="drop" />
 				<ul class="menu ml-auto mt-1">
-					<li class="active"><a href="index.html">Home</a></li>
+					<li class="active"><a href="./admin/Price.html">Add Price</a></li>
 					<li class=""><a href="#about">About Us</a></li>
-					<li class=""><a href="#services">Services</a></li>
+					<li class=""><a href="./admin/index.html">Add Services</a></li>
 					<li class=""><a href="#portfolio">Portfolio</a></li>
-					<li class=""><a href="#contact">Contact</a></li>
+					<!-- <li class=""><a href="#contact">Contact</a></li> -->
+					<li class=""><a href="./admin/ourteam.html">Edit OurTeam</a></li>
 					<li class="last-grid"><a href="#register">Register now</a></li>
 				</ul>
 			</nav>
@@ -258,8 +259,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h5 class="heading heading1 mb-2"> Our Team</h5>
 				<h3 class="heading heading1 mb-sm-5 mb-3">Our Expert Minds</h3>
 			</div>
-			<div class="row team-grid">
-				<div class="col-lg-3 col-sm-6 mb-4">
+			<div class="row team-grid" id="ourteamlist">
+				<!-- <div class="col-lg-3 col-sm-6 mb-4">
 					<div class="box13">
 						<img src="images/team1.jpg" class="img-fluid img-thumbnail" alt="" />
 						<div class="box-content">
@@ -310,7 +311,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>
@@ -437,8 +438,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container py-md-5 py-3">
 			<h5 class="heading mb-2"> Exclusive prices</h5>
 			<h3 class="heading mb-sm-5 mb-3">We Provide Best price</h3>
-			<div class="row pricing-plans">
-				<div class="col-md-4 price-main text-center mb-4">
+			<div class="row pricing-plans" id="pricetag">
+				<!-- <div class="col-md-4 price-main text-center mb-4">
 					<div class="pricing-grid card">
 						<div class="card-body">
 							<span class="fa fa-user-o" aria-hidden="true"></span>
@@ -488,7 +489,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>
@@ -659,7 +660,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<script src='./js/services.js'></script>
 	<script>
-		generateDom('#servicesList')
+		generateDom('#servicesList');
+	</script>
+
+	<script src='./js/ourTeam.js'></script>
+	<script>
+		generateDom('#ourteamlist');
+	</script>
+
+	<script src='./js/price.js'></script>
+	<script>
+		generateDom('#pricetag');
 	</script>
 </body>
 
