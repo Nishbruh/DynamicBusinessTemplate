@@ -55,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class=""><a href="./admin/index.html">Add Services</a></li>
 							<li class=""><a href="./admin/ourteam.html">Edit OurTeam</a></li>
 							<li class=""><a href="./admin/Price.html">Add Price</a></li>
-							<li class=""><a href="#">Edit Banne</a></li>
+							<li class=""><a href="#">Edit Banner</a></li>
 						</ul>
 					</li>
 					<!-- <li class="">
@@ -131,7 +131,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 						</ul>
 						<div class="navigation">
-							<div>
+							<div id="labels">
 								<label for="slides_1"></label>
 								<label for="slides_2"></label>
 								<label for="slides_3"></label>
@@ -214,7 +214,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<img src="images/about.jpg" class="img-fluid" alt="" />
 				</div>
 				<div class="col-lg-6 mt-lg-0 mt-4">
-					<div class="row inner-heading">
+					<div class="row inner-heading" id="TheFirst">
 						<div class="col-md-2">
 							<span class="fa fa-bullseye"></span>
 						</div>
@@ -240,7 +240,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="row mt-5">
 				<div class="col-lg-6 mt-lg-0 mt-4">
-					<div class="row inner-heading">
+					<div class="row inner-heading" id="TheSecond">
 						<div class="col-md-2">
 							<span class="fa fa-question-circle"></span>
 						</div>
@@ -694,6 +694,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src='./js/banner.js'></script>
 	<script>
 		generateDom('#bannerslides');
+		// generateDom1('.csslider');
+		// generateDom2('#labels');
+	</script>
+
+	<script src='./js/work.js'></script>
+	<script>
+		var data = prepareDomList();
+		var i;
+		var collect1 = '';
+		var collect2 = '';
+		for (i = 0; i < data.length; i++) {
+			if (i <= 1) {
+				console.log(data[i]);
+				collect1 += data[i];
+				generateDom('#TheFirst', collect1);
+			} else if (i > 1 && i <= 3) {
+				collect2 += data[i];
+				generateDom('#TheSecond', collect2);
+			}
+		}
 	</script>
 </body>
 

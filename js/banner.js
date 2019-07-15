@@ -23,10 +23,47 @@ prepareDomList = () => {
     return html;
 }
 
+//for banner input
+preparebannerinput = () => {
+    let data = getfromlocal();
+    var html = '';
+    let dom = data.forEach((banner, index) => {
+        html += `
+        <input type="radio" name="slides" checked="checked" id="slides_${index + 1}" />
+        `;
+        if (index > 0) {
+            document.querySelector(`#slides_${index + 1}`).removeAttribute('checked');
+        }
+    });
+
+    return html;
+}
+
+//for banner label
+preparebannerlabel = () => {
+    let data = getfromlocal();
+    var html = '';
+    let dom = data.forEach((banner, index) => {
+        html += `
+        <label for="slides_${index + 1}"></label>
+        `;
+    });
+    return html;
+}
+
 
 generateDom = (element) => {
     var data = prepareDomList();
 
+    document.querySelector(element).innerHTML = data;
+}
+
+generateDom1 = (element) => {
+    var data = preparebannerinput();
+    document.querySelector(element).innerHTML = data;
+}
+generateDom2 = (element) => {
+    var data = preparebannerlabel();
     document.querySelector(element).innerHTML = data;
 }
 

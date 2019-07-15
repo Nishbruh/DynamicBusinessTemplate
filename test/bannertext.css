@@ -1,3 +1,10 @@
+.body {
+    background-color: #5e2ced;
+    border: solid red 2px;
+    height: 400px;
+    width: 400px;
+}
+
 .csslider {
     position: relative;
 }
