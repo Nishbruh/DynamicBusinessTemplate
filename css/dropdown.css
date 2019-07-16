@@ -1,0 +1,9 @@
+.container .drop>ul {
+    border-radius: 5px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.container .drop>ul>li a:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
