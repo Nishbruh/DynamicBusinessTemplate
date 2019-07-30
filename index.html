@@ -34,6 +34,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		rel="stylesheet">
 	<!-- //Fonts -->
 	<link rel="stylesheet" href="./css/dropdown.css">
+	<script src='../js/jquery.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 </head>
 
 <body>
@@ -71,6 +73,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</li> -->
 					<!-- <li class=""><a href="./admin/index.html">Add Services</a></li> -->
 					<li class=""><a href="#portfolio">Portfolio</a></li>
+					<li class=""><a href="./admin/login.html">Log In</a></li>
 					<!-- <li class=""><a href="#contact">Contact</a></li> -->
 					<!-- <li class=""><a href="./admin/ourteam.html">Edit OurTeam</a></li> -->
 					<li class="last-grid"><a href="#register">Register now</a></li>
@@ -88,13 +91,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container">
 				<div class="banner-text-w3pvt">
 					<!-- banner slider-->
-					<div class="csslider infinity" id="slider1">
-						<input type="radio" name="slides" checked="checked" id="slides_1" />
+					<div class="csslider infinity" id="sliderone">
+						<!-- <input type="radio" name="slides" checked="checked" id="slides_1" />
 						<input type="radio" name="slides" id="slides_2" />
 						<input type="radio" name="slides" id="slides_3" />
-						<input type="radio" name="slides" id="slides_4" />
+						<input type="radio" name="slides" id="slides_4" /> -->
 						<ul class="banner_slide_bg" id="bannerslides">
-							<li>
+							<!-- <li>
 								<div class="w3ls_banner_txt">
 
 									<h3 class="b-w3ltxt text-capitalize mt-md-4">Best Marketing Platform to Really Grow
@@ -130,14 +133,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#about" class="btn btn-banner my-sm-3 mr-2">Read More</a>
 
 								</div>
-							</li>
+							</li> -->
 						</ul>
 						<div class="navigation">
-							<div id="labels">
-								<label for="slides_1"></label>
+							<div id="labls">
+								<!-- <label for="slides_1"></label>
 								<label for="slides_2"></label>
 								<label for="slides_3"></label>
-								<label for="slides_4"></label>
+								<label for="slides_4"></label> -->
 							</div>
 						</div>
 					</div>
@@ -148,6 +151,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!-- //banner -->
 	<!-- about -->
+	<select id="postId" name="PostId">
+
+	</select>
 	<section class="services py-5" id="services">
 		<div class="container py-md-5 py-3">
 			<h5 class="heading mb-2">Exclusive Services</h5>
@@ -682,7 +688,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script>
 		generateDom('#servicesList');
 	</script>
-
+	<script src="./js/utils/common.js"></script>
+	<script src="./js/post.js"></script>
 	<script src='./js/ourTeam.js'></script>
 	<script>
 		generateDom('#ourteamlist');
@@ -695,9 +702,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<script src='./js/banner.js'></script>
 	<script>
-		generateDom('#bannerslides');
-		// generateDom1('.csslider');
-		// generateDom2('#labels');
+		// let data = getfromlocal();
+		// for (let i = 0; i < data.length; i++) {
+		// 	generateDom('#bannerslides', data[i]);
+		// 	generateDom1('.csslider', data[i]);
+		// 	generateDom2('#labels', data[i]);
+		// };
+		let Thethree = filtered();
+		console.log(Thethree[0]);
+		console.log(Thethree[1]);
+		console.log(Thethree[2]);
+		generateDom('#bannerslides', Thethree[0]);
+
+		generateDom('#sliderone', Thethree[1]);
+
+		generateDom('#labls', Thethree[2]);
 	</script>
 
 	<script src='./js/work.js'></script>
@@ -708,7 +727,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		var collect2 = '';
 		for (i = 0; i < data.length; i++) {
 			if (i <= 1) {
-				console.log(data[i]);
 				collect1 += data[i];
 				generateDom('#TheFirst', collect1);
 			} else if (i > 1 && i <= 3) {
@@ -716,6 +734,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				generateDom('#TheSecond', collect2);
 			}
 		}
+	</script>
+	<script>
+		window.addEventListener('load', () => {
+			const posts = _getPostsSelectList()
+			console.log(posts)
+		})
 	</script>
 </body>
 

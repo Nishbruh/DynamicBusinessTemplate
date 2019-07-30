@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.bg-img {
+    position: relative;
+}
+
+.container .wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+
+}
+
+.bg-img .container #head {
+    top: 20%;
+    color: #fff;
+}
+
+.bg-img .container #login-form .btnstyle {
+    background-color: #5e2ced;
+    color: #fff;
+}
+
+.drop {
+    border-left: 1.5px #ddd solid;
+}

@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    margin-top: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.container #toaster {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    width: 300px;
+    padding: 20px 0px;
+    border-radius: 5px;
+    background-color: #007bff;
+    /* opacity: 0; */
+    transition: 2s ease-in-out;
+}
+
+.container #toaster.fadeinout {
+    opacity: 0;
+
+}
+
+.container #toaster:hover {
+    background-color: #006ce0;
+}
+
+.container #sign,
+#desc,
+#desc p,
+#close {
+    padding: 0;
+    margin: 0;
+}
+
+.container #sign .fa {
+    color: white;
+    font-size: 24px;
+}
+
+.container #close .fa {
+    color: white;
+    font-size: 18px;
+}
+
+.container #close .fa:hover {
+    font-size: 24px;
+
+}
+
+.container #desc p {
+    font-size: 18px;
+    margin-left: 15px;
+}

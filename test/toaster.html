@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./toaster.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Toaster Test</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="row" id="toaster">
+            <div class="col-md-2 d-flex justify-content-center align-items-center" id="sign">
+                <i class="fa fa-exclamation-triangle  "></i>
+            </div>
+            <div class="col-md-8 text-white d-flex justify-content-center align-items-center" id="desc">
+                <p>This is the description portion</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center align-items-start" id="close">
+                <a href="#"><i class="fa fa-times"></i></a>
+            </div>
+        </div> -->
+        <div class="form">
+            <form id="toaster-form" action="">
+                <label for="name">Enter Your Name</label>
+                <input class="form-control" type="text" name="name" id="name">
+                <button type="button" class="btn btn-primary " id="btn">submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="./toaster.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+
+            document.querySelector('#btn').addEventListener('click', (e) => {
+                let fade;
+                let wiped;
+                let input = document.querySelector('#name').value;
+                if (input === '') {
+                    if (!document.querySelector('#toaster'))
+                        generatedata('.form');
+
+                }
+                if (document.querySelector('#toaster')) {
+                    document.querySelector('#cross').addEventListener('click', () => {
+                        console.log('oie');
+                        document.querySelector('#toaster').remove();
+                    })
+                }
+                if (document.querySelector('#toaster')) {
+                    toastanim(fade, wiped);
+
+                }
+
+                // document.querySelector('#toaster').addEventListener('mouseover', () => {
+                //     clearTimeout(fade);
+                //     fade = setTimeout(() => {
+                //         document.querySelector('#toaster').classList.add(
+                //             'fadeinout');
+                //     }, 2000);
+                //     clearTimeout(wiped);
+                //     wiped = setTimeout(() => {
+                //         document.querySelector('#toaster').remove();
+                //     }, 4000);
+
+                //     console.log(fade);
+            });
+
+            // if (document.querySelector('#toaster')) {
+            //     if (!document.querySelector('#toaster').addEventListener('mouseover', () => {
+            //             console.log('its over');
+            //         })) {
+            //         setTimeout(() => {
+            //             document.querySelector('#toaster').remove();
+            //         }, 3000);
+            //     }
+            // }
+
+
+        });
+        toastanim = (a, b) => {
+            a = setTimeout(() => {
+                document.querySelector('#toaster').classList.add('fadeinout');
+            }, 1000);
+
+            b = setTimeout(() => {
+                document.querySelector('#toaster').remove();
+            }, 3000);
+        }
+
+        reset = () => {
+            clearTimeout(fade);
+            clearTimeout(wiped);
+            fade = setTimeout(() => {
+                document.querySelector('#toaster').classList.add('fadeinout');
+            }, 1000);
+            wiped = setTimeout(() => {
+                document.querySelector('#toaster').remove();
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

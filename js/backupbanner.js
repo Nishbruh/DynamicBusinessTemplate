@@ -30,45 +30,57 @@ filtered = () => {
         html1 += prepareDomList(data[i], i);
         html2 += preparebannerinput(data[i], i);
         html3 += preparebannerlabel(data[i], i);
-        // if (i !== 0) {
-        //     document.querySelector(`#slides_${i + 1}`).removeAttribute('checked');
-        // }
+        if (i !== 0) {
+            document.querySelector(`#slides_${i + 1}`).removeAttribute('checked');
+        }
     }
     htmlarray = [];
     htmlarray = [...htmlarray, html1, html2, html3];
+    console.log(htmlarray);
     return htmlarray;
 }
 
 //for banner input
-preparebannerinput = (data, i) => {
+preparebannerinput = (data) => {
     var html = '';
-    html += `
-        <input type="radio" name="slides" checked="checked" id="slides_${i + 1}" />
+    let dom = data.forEach((banner, index) => {
+        html += `
+        <input type="radio" name="slides" checked="checked" id="slides_${index + 1}" />
         `;
-    // if (index > 0) {
-    //     document.querySelector(`#slides_${index + 1}`).removeAttribute('checked');
-    // }
+        if (index > 0) {
+            document.querySelector(`#slides_${index + 1}`).removeAttribute('checked');
+        }
+    });
 
     return html;
 }
 
 //for banner label
-preparebannerlabel = (data, i) => {
+preparebannerlabel = (data) => {
     var html = '';
-
-    html += `
-        <label for="slides_${i + 1}"></label>
+    let dom = data.forEach((banner, index) => {
+        html += `
+        <label for="slides_${index + 1}"></label>
         `;
+    });
     return html;
 }
 
 
-generateDom = (element, info) => {
-    // console.log(info);
+generateDom = (element, data) => {
+    var info = prepareDomList();
+
     document.querySelector(element).innerHTML = info;
 }
 
-
+generateDom1 = (element, data) => {
+    var info = preparebannerinput();
+    document.querySelector(element).innerHTML = info;
+}
+generateDom2 = (element, data) => {
+    var info = preparebannerlabel();
+    document.querySelector(element).innerHTML = info;
+}
 
 prepareAdminDomLsit = () => {
     let data = getfromlocal();

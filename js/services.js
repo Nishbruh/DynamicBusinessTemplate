@@ -43,6 +43,7 @@ prepareAdminDomLsit = () => {
     <tbody>
 `;
     data.forEach((service, index) => {
+        console.log(service);
         html += `
        <tr>
             <td>${index+1}</td>

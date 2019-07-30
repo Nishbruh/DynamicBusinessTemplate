@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Dashboard</title>
+    <title>Author Dashboard</title>
 
     <!-- Custom-Files -->
     <link rel="stylesheet" href="../css/bootstrap.css">
@@ -45,7 +45,7 @@
                     <!-- <li class=""><a href="#about">About Us</a></li> -->
                     <li class="drop"><a href="#">Edit</a>
                         <ul class="">
-                            <li class=""><a href="../admin/index.html">Add Services</a></li>
+                            <li class=""><a href="../admin/index.html">Add authors</a></li>
                             <li class=""><a href="../admin/ourteam.html">Edit OurTeam</a></li>
                             <li class=""><a href="../admin/Price.html">Add Price</a></li>
                             <li class=""><a href="../admin/banner.html">Edit Banner</a></li>
@@ -55,13 +55,13 @@
                     <!-- <li class="">
                                     <select name="edit" id="edit" class="btn btn-primary">
                                         <option value=""><a href="#">Edit</a></option>
-                                        <option value="addservices"><a href="#about">Add Services</a></option>
+                                        <option value="addauthors"><a href="#about">Add authors</a></option>
                                         <option value="editourteam"><a href="#about">Edit OurTeam</a></option>
                                         <option value="addprice"><a href="#about">Add Price</a></option>
                                         <option value="editbanner"><a href="#about">Edit Banner</a></option>
                                     </select>
                                 </li> -->
-                    <!-- <li class=""><a href="./admin/index.html">Add Services</a></li> -->
+                    <!-- <li class=""><a href="./admin/index.html">Add authors</a></li> -->
                     <!-- <li class=""><a href="#portfolio">Portfolio</a></li> -->
                     <!-- <li class=""><a href="#contact">Contact</a></li> -->
                     <!-- <li class=""><a href="./admin/ourteam.html">Edit OurTeam</a></li> -->
@@ -69,77 +69,42 @@
                 </ul>
             </nav>
             <!-- //nav -->
-            <h1 class="text-center display-4" id="head">Service Dashbord</h1>
+            <h1 class="text-center display-4" id="head">Author Dashbord</h1>
         </div>
     </div>
     <div class="container">
-        <div class="services mt-5">
-            <h2 class="text-center">Edit Your Service List</h2>
+        <div class="authors mt-5">
+            <h2 class="text-center">Edit Your Author List</h2>
             <hr>
             <div class="row justify-content-around">
                 <div class=" col-md-5">
                     <h2 class="text-center">Entry From</h2>
-                    <form id="service-form">
+                    <form id="author-form">
                         <input type="hidden" id="id" name="id">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" />
+                            <label for="author">Author Name</label>
+                            <input type="text" class="form-control" id="author" name="author"
+                                placeholder="Auhtor Name" />
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="description">Description</label>
                             <textarea type="text" class="form-control" id="description" name="description"
                                 placeholder="Description"></textarea>
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn btn-primary btn-block">Submit</button>
                     </form>
                 </div>
                 <div class="col">
-                    <h3 class="text-center">Service List</h3>
-                    <div class="row p-3" id="serviceList">
+                    <h3 class="text-center">Author List</h3>
+                    <div class="row p-3" id="authorList">
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-    <script src="../js/services.js"></script>
-    <script>
-        generateAdminDom('#serviceList')
-        document.getElementById('service-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            let service = {}
-            $.each($(e.target).serializeArray(), function (_, kv) {
-                if (service.hasOwnProperty(kv.name)) {
-                    service[kv.name] = $.makeArray(service[kv.name]);
-                    service[kv.name].push(kv.value);
-                } else {
-                    service[kv.name] = kv.value;
-                }
-            });
-            if (service.id) {
-
-                editServiceLocal(service);
-            } else {
-                if (service.id === "") {
-                    service.id = new Date().toISOString();
-                    addService(service);
-                }
-            }
-            generateAdminDom('#serviceList')
-            e.target.reset();
-            $(':input').val('');
-        })
-        _removeService = (ctx) => {
-            if (confirm("Are you sure you want to delete service")) {
-                removeService(ctx)
-                generateAdminDom('#serviceList')
-            }
-        }
-        _editService = (ctx) => {
-            var data = editService(ctx)
-            populateData("#service-form", data)
-        }
-    </script>
+    <script src="../js/author.js"></script>
+    <script src="../js/utils/common.js"></script>
 </body>
 
 </html>
